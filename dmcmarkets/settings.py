@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'dmcmarkets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': '/var/run/mysqld/mysqld.sock',
         'NAME': 'dmc',
         'USER': 'root',
         'PASSWORD': 'tahir123',
