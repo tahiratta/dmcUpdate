@@ -79,12 +79,13 @@ WSGI_APPLICATION = 'dmcmarkets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '/var/run/mysqld/mysqld.sock',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dmc',
         'USER': 'root',
         'PASSWORD': 'tahir123',
         'HOST': 'localhost',
         'PORT': '3306',
+        'SOCKET': '/var/lib/mysql/mysql.sock'
         #'default-character-set' = 'utf8',
     }
 }
