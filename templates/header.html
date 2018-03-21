@@ -1,0 +1,220 @@
+{% load static %}
+{% block header %} 
+
+
+  <!--==========================
+    Header
+  ============================-->
+  <head>
+  <meta charset="utf-8">
+  <title>DMC Markets</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: BizPage
+    Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+ 
+  <header id="header" style="background-color: black; height: 150px;">
+  
+  
+
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="{% url 'index' %}" class="scrollto"><img src="{%static 'img/logo.png' %}"></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+
+      <nav id="nav-menu-container">
+  
+        <ul class="nav-menu"> 
+
+  <br/>
+         {% for menu in mindex %} 
+          {% if menu.menu_id == 'mi1' %} 
+          <li class="menu-active"><a href="{% url 'index' %}">{{ menu.menu_title }}</a></li>
+          {% elif menu.menu_id == 'mi2' %}
+                <li class="menu-has-children" ><a href="{% url 'products' %}">{{ menu.menu_title }}</a>
+            <ul>
+              {% for sub_menu in smindex %}
+              {% if sub_menu.sub_menu_id == 'smi1' %}
+              <li class="menu-has-children" ><a >{{ sub_menu.sub_menu_title }}</a>
+<ul>
+              {% for sub_of_sub_menu in ssmindex %}
+              {% if sub_of_sub_menu.sub_of_sub_menu_id == 'm1' %}
+              <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'm2' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'm3' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'm4' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>  
+              {% endif %}
+              {% endfor %}
+
+</ul>
+              </li>
+              {% elif sub_menu.sub_menu_id == 'smi2' %}
+              <li ><a href="#intro">{{ sub_menu.sub_menu_title }}</a>
+                 <ul>
+              {% for sub_of_sub_menu in ssmindex %}
+              {% if sub_of_sub_menu.sub_of_sub_menu_id == 'e1' %}
+              <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'e2' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'e3' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+
+              {% endif %}
+              {% endfor %}
+</ul>
+              </li>
+              {% elif sub_menu.sub_menu_id == 'smi3' %}
+              <li ><a href="#intro">{{ sub_menu.sub_menu_title }}</a>
+                <ul>
+              {% for sub_of_sub_menu in ssmindex %}
+              {% if sub_of_sub_menu.sub_of_sub_menu_id == 'c1' %}
+              <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c2' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c3' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c4' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+                 {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c5' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c6' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c7' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+                 {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c8' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c9' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c10' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+                 {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c11' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c12' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c13' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+                 {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c14' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c15' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'c16' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+   
+              {% endif %}
+              {% endfor %}
+</ul>
+              </li>
+              {% elif sub_menu.sub_menu_id == 'smi4' %}
+              <li ><a href="#intro">{{ sub_menu.sub_menu_title }}</a>
+                 <ul>
+              {% for sub_of_sub_menu in ssmindex %}
+              {% if sub_of_sub_menu.sub_of_sub_menu_id == 'i1' %}
+              <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'i2' %}
+               <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a>  </li>
+              {% elif sub_of_sub_menu.sub_of_sub_menu_id == 'i3' %} 
+                <li class="menu-has-children"><a href="#">{{ sub_of_sub_menu.sub_of_sub_menu_title }}</a></li>
+
+              {% endif %}
+              {% endfor %}
+</ul>
+              </li>
+              {% elif sub_menu.sub_menu_id == 'smi5' %}
+               <li ><a href="#intro">{{ sub_menu.sub_menu_title }}</a></li>  
+
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+          {% elif menu.menu_id == 'mi3' %}
+          <li><a href="{% url 'services' %}">{{ menu.menu_title }}</a>
+            <ul>
+              {% for sub_menu in smindex %}
+              {% if sub_menu.sub_menu_id == 'smi6' %}
+              <li class="menu-has-children" ><a href="{% static 'files/PMEXFORM.pdf' %}" >{{ sub_menu.sub_menu_title }}</a>
+                {% elif sub_menu.sub_menu_id == 'smi7' %}
+                <li class="menu-has-children" ><a href="{% static 'files/CommissionSheet.pdf' %}" >{{ sub_menu.sub_menu_title }}</a>
+              {% endif %}
+              {% endfor %}
+              </ul>
+       </li>
+            {% elif menu.menu_id == 'mi4' %}
+             <li><a href="{% url 'about' %}">{{ menu.menu_title }}</a></li>
+             {% elif menu.menu_id == 'mi5' %}
+          <li><a href="{% url 'certificate' %}">{{ menu.menu_title }}</a></li
+            {% elif menu.menu_id == 'mi6' %}>
+          <li><a href="{% url 'services' %}">{{ menu.menu_title }}</a></li>
+    
+          {% elif menu.menu_id == 'mi7' %}
+          <li><a href="{% url 'contact' %}">{{ menu.menu_title }}</a></li>
+          {% else %}    
+          <li><a href="{% url 'careers' %}">{{ menu.menu_title }}</a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  
+ <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+  <script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <script src="{% static 'lib/touchSwipe/jquery.touchSwipe.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <!--==========================
+    Footer
+  ============================-->
+
+{% endblock %} 
+ 

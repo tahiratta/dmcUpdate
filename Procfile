@@ -1,0 +1,1 @@
+web: gunicorn dmcmarkets.wsgi --log-file -

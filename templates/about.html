@@ -1,0 +1,62 @@
+{% load static %}
+
+{% block about %}
+{% include "header.html" %}
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<section id="about">
+      <div class="container">
+        {% for about in abindex %}  
+        <header class="section-header">
+          <h3>{{ about.about_title }}</h3>
+          <p>{{ about.about_content }}</p>
+        </header>
+
+        <div class="row about-cols">
+
+          <div class="col-md-4 wow fadeInUp">
+            <div class="about-col"> 
+              <div class="img">
+                <img src="{{about.mission_image.url}}" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#"></a></h2>
+              <p>{{ about.mission_content }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="about-col">
+              <div class="img">
+                <img src="{{about.value_image.url}}" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#"></a></h2>
+              <p>{{ about.value_content }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="about-col">
+              <div class="img">
+                <img src="{{about.vision_image.url}}" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#"></a></h2>
+              <p>
+                {{ about.vision_content }}
+              </p>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+    </section><!-- #about -->
+    {% include "footer.html" %}
+    {% endblock %}

@@ -1,0 +1,556 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<style>
+.section-space60{padding-top: 60px;padding-bottom: 60px;}
+.img-circle {
+  border-radius: 50%;
+}
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #18d26e;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+</style>
+</head>
+<body onload="myFunction()"  style="margin: 0;">
+
+<div id="loader" ></div>
+
+
+
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("main").style.display = "block";
+}
+</script>
+
+
+<!--==========================
+    Intro Section
+  ============================-->
+
+
+
+  <main id="main"  style="display: none;" >
+
+{% block base %} 
+  {%include "base.html" %}  
+  {% endblock %}
+
+
+  {% block intro %} 
+  {%include "intro.html" %}  
+  {% endblock %}
+    <!--==========================
+      Featured Services Section
+    ============================-->
+  {% block feature %} 
+  {%include "feature.html" %}  
+  {% endblock %}
+
+    <!--==========================
+      About Us Section
+    ============================-->
+
+
+    <!--==========================
+      Services Section
+    ============================-->
+  <section id="services">
+      <div class="container">
+
+        <header class="section-header wow fadeInUp">
+          <h3>Services</h3>
+          <p>We facilitates the buying and selling of financial securities between a buyer and a seller. We serve a clientele of investors who trade public stocks and other securities, usually through the firm's agent stockbrokers.</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+            <h4 class="title"><a href="">Investment Ideas</a></h4>
+            <p class="description">We bring ideas and result into existance. We think unique ideas and implement for better investment.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+            <h4 class="title"><a href="">Guidance</a></h4>
+            <p class="description">Provide clients a complete guidance related to business and let them know how and when they should invest in a commodity to make money.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+            <h4 class="title"><a href="">Market Research</a></h4>
+            <p class="description">We do research on international market to keep our clients up-to-date about ups and downs of market.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+            <h4 class="title"><a href="">Market Watch</a></h4>
+            <p class="description">Provide access of accounts to clients and give them proper knowlrdge to watch market so that they can trade themselves</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+            <h4 class="title"><a href="">Meetings</a></h4>
+            <p class="description">Organise indoor and outdoor meetings to provide clients the comfort and knowledge about market.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #services -->
+ 
+
+    <!--==========================
+      Call To Action Section
+    ============================-->
+  {% block callToAction %}
+  {%include "callToAction.html" %}  
+  {% endblock %} 
+
+    <!--==========================
+      Skills Section
+    ============================-->
+ 
+
+    <!--==========================
+      Facts Section
+    ============================-->
+  {% block facts %}
+  {%include "facts.html" %}  
+  {% endblock %} 
+
+    <!--==========================
+      Portfolio Section
+    ============================-->
+  <section id="portfolio"  class="section-bg" >
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title">Our Products</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              {% for product in pindex %} 
+              {% if product.product_id == 'p1' %} 
+              <li data-filter="*" class="filter-active">{{ product.product_title }}</li>
+              {% elif product.product_id == 'p2' %}
+              <li data-filter=".filter-gold">{{ product.product_title }}</li>
+              {% elif product.product_id == 'p3' %}
+              <li data-filter=".filter-Energies">{{ product.product_title }}</li>
+              {% elif product.product_id == 'p4' %}
+              <li data-filter=".filter-Currencies">{{ product.product_title }}</li>
+              {% elif product.product_id == 'p5' %}
+                <li data-filter=".filter-Indicies">{{ product.product_title }}</li>
+                {% elif product.product_id == 'p6' %}
+                <li data-filter=".filter-cotton">{{ product.product_title }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul> 
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-gold wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                {% for sub_product in spindex %} 
+                {% if sub_product.sub_product_id == 'm1' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="Metal 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                
+              </div>
+            </div>
+          </div>
+
+      
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-gold wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'm2' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Metal 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+              
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-gold wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'm4' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Metal 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Energies wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                {% for sub_product in spindex %} 
+                {% if sub_product.sub_product_id == 'e1' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Energies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                
+              </div>
+            </div>
+          </div>
+   <div class="col-lg-4 col-md-6 portfolio-item filter-Indicies wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'i1' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Indicies 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                
+              </div>
+            </div>
+          </div>
+
+           <div class="col-lg-4 col-md-6 portfolio-item filter-Indicies wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'i2' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Indicies 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Indicies wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'i3' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Indicies 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% for sub_product in spindex %} 
+                {% if sub_product.sub_product_id == 'c1' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+              </div>
+            </div>
+          </div>
+   <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'c2' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+        
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'c3' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'c4' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'c5' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'c6' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Currencies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'c7' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Currencies 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-gold wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% for sub_product in spindex %} 
+                {% if sub_product.sub_product_id == 'm3' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Metal 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Energies wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                {% for sub_product in spindex %} 
+                {% if sub_product.sub_product_id == 'e2' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Energies 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Energies wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% elif sub_product.sub_product_id == 'e3' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Energies 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+       <div class="col-lg-4 col-md-6 portfolio-item filter-cotton wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                {% for sub_product in spindex %} 
+                {% if sub_product.sub_product_id == 'co1' %}
+                <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
+                <a href="{{sub_product.sub_product_image.url}}" class="link-preview" data-lightbox="portfolio" data-title="Energies 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">{{ sub_product.sub_product_title }}</a></h4>
+                <p>{{ sub_product.sub_product_content }}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section><!-- #portfolio -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+
+    <!--==========================
+      Testimonials Section
+    ============================-->
+ 
+
+    <!--==========================
+      Team Section
+    ============================-->
+  {% block team %}
+  {%include "team.html" %}  
+  {% endblock %}   
+
+    <!--==========================
+      Contact Section
+    ============================-->
+  
+  {% block footer %} 
+  {%include "footer.html" %}  
+  {% endblock %}
+
+
+  </main>
+
+</body>
+</html>
