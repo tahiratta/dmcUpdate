@@ -25,12 +25,11 @@ SECRET_KEY = 'mbi4+v#w$fepyn=yo739t6$1ob0l(yihu7@#ueg37+%+wkqy55'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'powerful-anchorage-60495.herokuapp.com', 'dmcmarkets.herokuapp.com']
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static'),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+)
 
 # Application definition
 
