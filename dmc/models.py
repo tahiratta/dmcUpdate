@@ -25,19 +25,7 @@ class Sub_menu(models.Model):
 
     def __str__(self):
         return self.sub_menu_title
-
-class Sub_of_sub_menu(models.Model):
-    class Meta:
-        verbose_name_plural = "sub_of_sub_menu"
-
-    sub_of_sub_menu_id = models.CharField(primary_key=True,max_length=20)
-    sub_menu = models.ForeignKey(Sub_menu, on_delete = models.CASCADE)
-    sub_of_sub_menu_title = models.CharField(max_length=200)
-    created_at = models.DateTimeField(auto_now_add =True)
-    updated_at = models.DateTimeField(auto_now =True)
-
-    def __str__(self):
-        return self.sub_of_sub_menu_title      
+     
 
 class Video_slider(models.Model):
     class Meta:
@@ -52,20 +40,7 @@ class Video_slider(models.Model):
 
     def __str__(self):
         return self.vslider_title 
-
-class Image_slider(models.Model):
-    class Meta:
-        verbose_name_plural = "image_slider"
-
-    islider_id = models.CharField(primary_key=True,max_length=20)
-    islider_title = models.CharField(max_length=200)
-    islider_description = models.CharField(max_length=200)
-    islider_image = models.ImageField()
-    created_at = models.DateTimeField(auto_now_add =True)
-    updated_at = models.DateTimeField(auto_now =True)
-
-    def __str__(self):
-        return self.islider_title        
+       
 
 class Product(models.Model):
     class Meta:

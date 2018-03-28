@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from dmc.models import Menu, Sub_menu, Sub_of_sub_menu, Video_slider, Image_slider, Product, Sub_product, About
+from dmc.models import Menu, Sub_menu, Video_slider, Product, Sub_product, About
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import contactForm
@@ -18,18 +18,15 @@ import os
 def index(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
 	vslindex = Video_slider.objects.all()
-	islindex = Image_slider.objects.all()
 	pindex = Product.objects.all()
 	spindex = Sub_product.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex, 'vslindex' : vslindex, 'islindex' : islindex, 'pindex' : pindex, 'spindex' : spindex}
+	context = {'mindex' : mindex, 'smindex' : smindex, 'vslindex' : vslindex, 'pindex' : pindex, 'spindex' : spindex}
 	return render(request, 'index.html', context)
 
 def contact(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
 
 	title = 'Contact Us'
 	form = contactForm(request.POST or None)
@@ -48,44 +45,39 @@ def contact(request):
 		confirm_message = "Thanks for the message, we will right back to you."
 		form = None
 		
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
+	context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
 	return render(request, 'contact.html', context)
 
 def about(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
 	abindex = About.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex, 'abindex' : abindex}
+	context = {'mindex' : mindex, 'smindex' : smindex,  'abindex' : abindex}
 	return render(request, 'about.html', context)
 
 def products(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
 	pindex = Product.objects.all()
 	spindex = Sub_product.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex, 'pindex' : pindex, 'spindex' : spindex }
+	context = {'mindex' : mindex, 'smindex' : smindex, 'pindex' : pindex, 'spindex' : spindex }
 	return render(request, 'portfolio.html', context)
 
 def services(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex}
+	context = {'mindex' : mindex, 'smindex' : smindex}
 	return render(request, 'services.html', context)			
 
 def certificate(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex}
+	context = {'mindex' : mindex, 'smindex' : smindex}
 	return render(request, 'certificate.html', context)	
 
 def careers(request):
 		mindex = Menu.objects.all()
 		smindex = Sub_menu.objects.all()
-		ssmindex = Sub_of_sub_menu.objects.all()
 
 		title = 'Careers'
 		form = careersForm(request.POST or None, request.FILES or None)
@@ -109,10 +101,10 @@ def careers(request):
 			title = "Thanks!"
 			confirm_message = "Thanks for the message, we will right back to you."
 			form = None
-			context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
+			context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
 			return render(request, 'careers.html',context)
 			
-		context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
+		context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
 		return render(request, 'careers.html', context)
 		# attachement = open(filename, 'rb')
 		# part = MIMEBase('application', 'octet-stream')
@@ -125,7 +117,6 @@ def careers(request):
 def pdfs(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	ssmindex = Sub_of_sub_menu.objects.all()
 
 
 	start_path = 'settings.MEDIA_ROOT' # current directory
@@ -133,6 +124,6 @@ def pdfs(request):
 		for filename in files:
 			{{ os.path.join(path,filename) }}
 
-	context = {'mindex' : mindex, 'smindex' : smindex, 'ssmindex' : ssmindex}
+	context = {'mindex' : mindex, 'smindex' : smindex}
 	return render(request, 'pdfs.html', context)			
 		
