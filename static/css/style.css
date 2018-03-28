@@ -1195,7 +1195,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #team .member:hover .member-info {
-  background: rgba(0, 0, 0, 0.7);
   opacity: 1;
   transition: 0.4s;
 }
