@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'dmcmarkets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dmc',
-        'USER': 'root',
-        'PASSWORD': 'tahir123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd18adq4ed9adct',
+        'USER': 'kpokqprucmrdik',
+        'PASSWORD': '3bcf3fcb7c943f1c0f2c790197f272a5c132c276f02ec4d4724584e21582ad34',
+        'HOST': 'ec2-54-204-44-140.compute-1.amazonaws.com',
+        'PORT': '5432',
 
         #'default-character-set' = 'utf8',
     }
