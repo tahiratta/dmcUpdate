@@ -1,57 +1,35 @@
 {% load static %}
+{% load crispy_forms_tags %} 
 
-{% block careers %}
+{%block careers%}
 {% include "header.html" %}
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<section id="contact" class="section-bg wow fadeInUp">
-      <div class="container">
 
-        <div class="section-header">
-          <h3>Apply Online</h3>
-          <p>Please send us your resume and we will contact you back as soon as possible</p>
-        </div>
-
-        <div class="form">
-          <div id="sendmessage">Your message has been sent. Thank you!</div>
-          <div id="errormessage"></div>
-          <form action="" method="post" role="form" class="contactForm">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validation"></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 
-               <div class="form-group">
-               	<label> <b > <font color="#18d26e">&nbsp;&nbsp;&nbsp;Your Resume</font></b><br><input type="file" name="file-752"  size="40" class="wpcf7-form-control wpcf7-file wpcf7-validates-as-required" accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.ppt,.pptx,.odt,.avi,.ogg,.m4a,.mov,.mp3,.mp4,.mpg,.wav,.wmv" aria-required="true" aria-invalid="false">
-				</label>
-				<div class="validation"></div>
-				</div>
-
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validation"></div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
-
+<div>
+  <div class="row">
+    <div>
+      <div class="col-sm-6 col-sm-offset-3">
+      <h1>{{ title }}</h1>
+       {% if confirm_message %}
+        <p>{{confirm_message}}</p>
+       {% endif %}
+       {% if form %}
+       <form method='POST' action="" enctype='multipart/form-data'>{% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value='submit form' class='btn btn-default' />
+       </form>
+       {% endif %}
+      
       </div>
-    </section><!-- #contact -->
-    
-
+    </div>
+  </div>
+</div>
 {% include "footer.html" %}
-    {% endblock %}
+
+{% endblock %}    

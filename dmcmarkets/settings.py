@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import psycopg2
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,15 +22,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'mbi4+v#w$fepyn=yo739t6$1ob0l(yihu7@#ueg37+%+wkqy55'
 
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER ='dmcmarketsadm@gmail.com'
+EMAIL_HOST_PASSWORD ='dmcmarkets8642'
+EMAIL_PORT ='587'
+EMAIL_USE_TLS = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'powerful-anchorage-60495.herokuapp.com', 'dmcmarkets.herokuapp.com']
-
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'ddmcmarketss.herokuapp.com']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'dmcmarkets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dmc',
         'USER': 'root',
         'PASSWORD': 'tahir123',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
 
         #'default-character-set' = 'utf8',
     }
@@ -141,6 +141,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
 MEDIA_URL = '/media/'
