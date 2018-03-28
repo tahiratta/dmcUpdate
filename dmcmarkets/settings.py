@@ -31,7 +31,7 @@ EMAIL_USE_TLS = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'ddmcmarketss.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'ddmcmarketss.herokuapp.com', 'dmcmarkets.herokuapp.com']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
