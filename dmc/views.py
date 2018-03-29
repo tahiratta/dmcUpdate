@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from dmc.models import Menu, Sub_menu, Video_slider, Product, Sub_product, About
+from dmc.models import Menu, Sub_menu, Video_slider, Product, Sub_product, About, Service
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import contactForm
@@ -21,7 +21,8 @@ def index(request):
 	vslindex = Video_slider.objects.all()
 	pindex = Product.objects.all()
 	spindex = Sub_product.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'vslindex' : vslindex, 'pindex' : pindex, 'spindex' : spindex}
+	sindex = Service.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex,'sindex': sindex, 'vslindex' : vslindex, 'pindex' : pindex, 'spindex' : spindex}
 	return render(request, 'index.html', context)
 
 def contact(request):
@@ -66,12 +67,14 @@ def products(request):
 def services(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex}
+	sindex = Service.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex, 'sindex': sindex}
 	return render(request, 'services.html', context)			
 
 def certificate(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
+
 	context = {'mindex' : mindex, 'smindex' : smindex}
 	return render(request, 'certificate.html', context)	
 
@@ -127,3 +130,9 @@ def pdfs(request):
 	context = {'mindex' : mindex, 'smindex' : smindex}
 	return render(request, 'pdfs.html', context)			
 		
+
+def marketWatch(request):
+	mindex = Menu.objects.all()
+	smindex = Sub_menu.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex}
+	return render(request, 'marketWatch.html', context)		

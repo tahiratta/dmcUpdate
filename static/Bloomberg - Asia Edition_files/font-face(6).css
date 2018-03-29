@@ -1,0 +1,8 @@
+
+@font-face {
+    font-family: 'BWHaasText-55Roman';
+    
+    
+    src: url('https://assets.bwbx.io/font-service/fonts/BWHaasText-55Roman-2558d87ee8.woff2') format('woff2'),
+         url('https://assets.bwbx.io/font-service/fonts/BWHaasText-55Roman-887c01ff69.woff') format('woff');
+}

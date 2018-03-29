@@ -10,4 +10,6 @@ urlpatterns = [
     path('certificate/', views.certificate, name='certificate'),
     path('careers/', views.careers, name='careers'),
     path('pdfs/', views.pdfs, name='pdfs'),
+    path('marketWatch/', views.marketWatch, name='marketWatch'),
+
 ]

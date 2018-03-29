@@ -1,6 +1,39 @@
 {% load static %}
 
 {% block intro %}
+<head>
+<style>
+div.relative {
+    position: relative;
+    width: 400px;
+    height: 200px;
+
+} 
+
+div.absolute {
+    position: absolute;
+    top: 105px;
+    left: 400px;
+    text-align: left;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    
+}
+div.peak {
+    position: absolute;
+    top: 80px;
+    left: -420px;
+    text-align: left;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    
+}
+
+</style>
+
+</head>
 <section id="intro"> 
     <div class="intro-container">
       <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
@@ -20,15 +53,50 @@
       
       
       </div>
+
+
             <div class="carousel-container">
-              <div class="carousel-content">
+
+              <div class="relative">    
+                <div class="carousel-content">
 
                 <h2>{{ vslider.vslider_title }}</h2>
                 <p>{{ vslider.vslider_description }}</p>
                 <a href="#services" class="btn-get-started scrollto">Get Started</a>
                 {% endfor %}
+                <br/><br/> <br/><br/>
               </div>
+  <div class="absolute">     <a href="#news" class="scrollto">
+   <div  class="carousel-content" style="text-align: right;">
+              <div style="text-align: right">
+
+
+              <iframe onclick="#news" width="420" height="345" src="https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1">
+                </iframe>
+
+             
+              </div>
+              </div> </a></div>
+
+              <div class="peak">     <a href="#news" class="scrollto">
+   <div  class="carousel-content" style="text-align: left;">
+              <div style="text-align: left">
+
+
+              <div style="border: 2px solid #D5CC5A; overflow: hidden; margin: 15px auto; width: 440px; height: 355px;">
+              <iframe scrolling="no" src="https://www.cmcmarkets.com/en/" style="border: 0px none; margin-left: -5px; height: 3550px; margin-top: -3196px; width: 450px;">
+              </iframe>
+              </div>
+             
+              </div>
+              </div> </a></div>
+
+</div>
+        
             </div>
+
+          
+            
           </div>
 
         </div>

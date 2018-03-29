@@ -1,0 +1,56 @@
+//sends postMessages with height of page
+var broadcastResize = (function(){
+  var windowId = '';
+  var resizeCount = 0;
+
+  window.addEventListener(
+    "message",
+    function(event){
+      if (!event || !event.data) return
+      if (event.origin == "https://twitter.com") return
+      
+      //ads can send events that cause errors - catch and don't log them
+      var data
+      try { data = JSON.parse(event.data) }
+      catch (e) {}
+      if (!data) return
+      
+      if(data.method === "register"){
+        windowId = data.windowId;
+        resize();
+        subscribe();
+      }
+    },
+    false);
+
+  function resize(){
+    if (windowId === '') return
+    resizeCount++;
+
+    var message = {
+      method: "resize",
+      windowId: windowId,
+      height: document.getElementsByTagName('html')[0].offsetHeight
+    }
+    window.parent.postMessage(JSON.stringify(message), '*')
+  }
+
+  function subscribe(){
+    var message = {
+      method: 'subscribe',
+      windowId: windowId,
+      subscriptions: ['adInformation', 'windowHref', 'scroll']
+    }
+    window.parent.postMessage(JSON.stringify(message), '*')
+  }
+
+  resize.windowId = function(){
+    return windowId;
+  }
+
+  resize.resizeCount = function(){
+    return resizeCount;
+  }
+
+  return resize;
+})();

@@ -100,6 +100,8 @@ function showPage() {
   {%include "feature.html" %}  
   {% endblock %}
 
+
+
     <!--==========================
       About Us Section
     ============================-->
@@ -117,33 +119,13 @@ function showPage() {
         </header>
 
         <div class="row">
-
+          {% for service in sindex %}
           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
             <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-            <h4 class="title"><a href="">Investment Ideas</a></h4>
-            <p class="description">We bring ideas and result into existance. We think unique ideas and implement for better investment.</p>
+            <h4 class="title"><a href="">{{ service.service_title }}</a></h4>
+            <p class="description">{{ service.service_content }}</p>
           </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
-            <h4 class="title"><a href="">Guidance</a></h4>
-            <p class="description">Provide clients a complete guidance related to business and let them know how and when they should invest in a commodity to make money.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-            <h4 class="title"><a href="">Market Research</a></h4>
-            <p class="description">We do research on international market to keep our clients up-to-date about ups and downs of market.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-            <h4 class="title"><a href="">Market Watch</a></h4>
-            <p class="description">Provide access of accounts to clients and give them proper knowlrdge to watch market so that they can trade themselves</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
-            <h4 class="title"><a href="">Meetings</a></h4>
-            <p class="description">Organise indoor and outdoor meetings to provide clients the comfort and knowledge about market.</p>
-          </div>
-
+          {% endfor %}
         </div>
 
       </div>
@@ -160,7 +142,12 @@ function showPage() {
     <!--==========================
       Skills Section
     ============================-->
- 
+     <!--==========================
+      news Section
+    ============================-->
+  {% block news %} 
+  {%include "news.html" %}  
+  {% endblock %}
 
     <!--==========================
       Facts Section

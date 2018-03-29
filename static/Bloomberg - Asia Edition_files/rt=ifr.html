@@ -1,0 +1,33 @@
+
+<!-- saved from url=(0545)https://bcp.crwdcntrl.net/5/c=12098/rand=497496649/pv=y/int=%23OpR%2380088%23Total%20Site%20Traffic%20%3A%20https%3A%2F%2Fwww.bloomberg.com/int=%23OpR%2381954%23dataLayer%20%3A%20adcode%20%3A%20business%2Fhome/int=%23OpR%2381968%23dataLayer%20%3A%20contentType%20%3A%20homepage-asia/int=%23OpR%2381969%23dataLayer%20%3A%20pageName%20%3A%20homepage/int=%23OpR%2381970%23dataLayer%20%3A%20pageType%20%3A%20homepage/int=%23OpR%2381971%23dataLayer%20%3A%20refresh%20%3A%20false/int=%23OpR%2381976%23dataLayer%20%3A%20transporter%20%3A%20false/rt=ifr -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background-color:transparent; width: 100%; text-align: center;">
+<div><img src="./5" width="1" height="1"><img src="./382416.gif" width="1" height="1"><img src="./5907" width="1" height="1"><script>
+function processTargusData(json)
+{
+   if (json != null) {
+       if (json.targus != null) {
+            u = "";
+            v = "map";
+            if (json.targus.sk != null && json.targus.sk != "") {
+                u += "/tp=TARG/tpid=" + json.targus.sk;
+            }
+            if (json.targus.age != null && json.targus.age != "") {
+                u += "/genp=" + (new Date().getFullYear() - json.targus.age);
+                v = "5";
+            }
+            if (json.targus.gender != null && json.targus.gender != "") {
+                u += "/genp=gender%20-%20" + json.targus.gender;
+                v = "5";
+            }
+            if (u != "") {
+              var img = new Image();
+              img.src = "https://bcp.crwdcntrl.net/" + v + "/c=368" + u;
+              document.body.appendChild(img);
+            }
+        }
+   }
+}
+</script>
+<script src="./g.json"></script><img src="./getdata.xgi" height="1" width="1"><img src="./usync" height="1" width="1"></div><img src="./tpid=163921202637000410798">
+
+</body></html>

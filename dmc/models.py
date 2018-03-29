@@ -87,3 +87,16 @@ class About(models.Model):
 
     def __str__(self):
         return self.about_title                 
+
+class Service(models.Model):
+    class Meta:
+        verbose_name_plural = "service"
+
+    service_id = models.CharField(primary_key=True,max_length=20)
+    service_title = models.CharField(max_length=20)
+    service_content = models.CharField(max_length=7000)
+    created_at = models.DateTimeField(auto_now_add =True)
+    updated_at = models.DateTimeField(auto_now =True)
+
+    def __str__(self):
+        return self.service_title    
