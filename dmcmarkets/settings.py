@@ -39,9 +39,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'ddmcmarketss.herokuapp.com', 'dmcmarkets.herokuapp.com']
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -149,7 +148,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 
 
