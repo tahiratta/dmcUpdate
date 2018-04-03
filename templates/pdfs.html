@@ -1,45 +1,35 @@
 {% load static %}
-{% load crispy_forms_tags %} 
 
-{%block careers%}
+{% block pdfs %}
 {% include "header.html" %}
+<br/>
 
-<br/>
-<br/>
-<br/>
-<br/>
-asd
-asd
-asd
-asd
-asd
-asd
-asdf
-asdf
-asf
-asdfasd
-fas
-fd
-asd
-asd
-as
-das
-das
-da
-sda
-sd
-asd
-asd
-as
-
-<br/>
-<br/>
-			
-{% for filename in files %}
-  {{ file }}
-{% endfor %}
+<br/><br/><br/><br/><br/><br/><br/>
+<div class="container">
+  <div class="section-header">
+          <h3>Applicants' Resumes</h3>
+        </div>
+  <br/>           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Document</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    {% for document in dindex %}
+    <tbody>
+      <tr>
+        <td><a href="{{document.document.url}}" style="text-decoration: underline; color:blue;
+    cursor: pointer;" download>Click here to Download Resume </a></td>
+    	<td>{{ document.name }}</td>
+        <td>{{ document.email }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
 
 {% include "footer.html" %}
-
-{% endblock %}   
-
+{% endblock %}

@@ -10,26 +10,58 @@
 <br/>
 <br/>
 <br/>
+<section id="contact" class="section-bg wow fadeInUp">
+      <div class="container">
 
-<div>
-  <div class="row">
-    <div>
-      <div class="col-sm-6 col-sm-offset-3">
-      <h1>{{ title }}</h1>
+        <div class="section-header">
+          <h3>Contact Us</h3>
+          <p>Please fill out the quick form and we will be in touch with lightening speed</p>
+        </div>
+
+        <div class="row contact-info">
+
+          <div class="col-md-4">
+            <div class="contact-address">
+              <i class="ion-ios-location-outline"></i>
+              <h3>Address</h3>
+              <address>2nd Floor 36-Z DHA Phase-3 LAHORE,PAKISTAN</address>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-phone">
+              <i class="ion-ios-telephone-outline"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:042-3718 5340">+92 423 7185340</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="ion-ios-email-outline"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@dmcmarkets.com">info@dmcmarkets.com</a></p>
+            </div>
+          </div>
+
+        </div>
+      <div class="col-md-12">
        {% if confirm_message %}
-        <p>{{confirm_message}}</p>
+        <p style="text-align: center;">{{confirm_message}}</p>
        {% endif %}
        {% if form %}
        <form method='POST' action="">{% csrf_token %}
         {{form|crispy}}
-        <input type="submit" value='submit form' class='btn btn-default' />
+        <input type="submit" style="background-color:#18d26e" value='Submit' class='btn btn-default' />
        </form>
        {% endif %}
-      
       </div>
-    </div>
-  </div>
-</div>
+
+      </div>
+    </section><!-- #contact -->
+
+
+
 {% include "footer.html" %}
 
 {% endblock %}

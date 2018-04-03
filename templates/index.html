@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
 <style>
+
 .section-space60{padding-top: 60px;padding-bottom: 60px;}
 .img-circle {
   border-radius: 50%;
@@ -55,6 +56,12 @@
   from{ bottom:-100px; opacity:0 } 
   to{ bottom:0; opacity:1 }
 }
+
+@media (max-width: 1026px) {
+        #test {
+            display: none;
+        }
+    }
 </style>
 </head>
 <body onload="myFunction()"  style="margin: 0;">
@@ -67,7 +74,7 @@
 var myVar;
 
 function myFunction() {
-    myVar = setTimeout(showPage, 3000);
+    myVar = setTimeout(showPage, 1200);
 }
 
 function showPage() {
@@ -156,6 +163,19 @@ function showPage() {
   {%include "facts.html" %}  
   {% endblock %} 
 
+  <!--==========================
+      Market Watch Section
+    ============================-->
+  </br></br>
+    <div id = "test">
+    <header class="section-header">
+          <h3 class="section-title">Market Watch</h3>
+        </header></br></br>
+    <div style="border: 2px solid #D5CC5A; overflow: hidden; margin: 15px auto; width: 100%; height: 330px;">
+              <iframe scrolling="no" src="https://www.cmcmarkets.com/en/" style="border: 0px none; margin-left: -5px; height:2845px; margin-top: -2480px; width: 100%;">
+              </iframe>
+              </div> 
+       </div>              
     <!--==========================
       Portfolio Section
     ============================-->
@@ -206,7 +226,7 @@ function showPage() {
 
            <figure> 
                 <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
-                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="Metal 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="{{ sub_product.sub_product_description }}" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
               </figure>
 
@@ -238,7 +258,7 @@ function showPage() {
 
            <figure> 
                 <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
-                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="Metal 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="{{ sub_product.sub_product_description }}" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
               </figure>
 
@@ -270,7 +290,7 @@ function showPage() {
 
            <figure> 
                 <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
-                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="Metal 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="{{ sub_product.sub_product_description }}" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
               </figure>
 
@@ -302,7 +322,7 @@ function showPage() {
 
            <figure> 
                 <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
-                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="Metal 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="{{ sub_product.sub_product_description }}" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
               </figure>
 
@@ -334,7 +354,7 @@ function showPage() {
 
            <figure> 
                 <img src="{{sub_product.sub_product_image.url}}" class="img-fluid" alt="">
-                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="Metal 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="{{sub_product.sub_product_image.url}}" data-lightbox="portfolio" data-title="{{ sub_product.sub_product_description }}" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <!--<a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>-->
               </figure>
 
@@ -359,7 +379,6 @@ function showPage() {
 
      </div>   
  </div>
-      </div>
     </section><!-- #portfolio -->
 
     <!--==========================

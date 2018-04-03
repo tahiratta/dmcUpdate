@@ -66,13 +66,12 @@
           {% elif menu.menu_id == 'mi3' %}
           <li><a href="#">{{ menu.menu_title }}</a>
             <ul>
-              {% for sub_menu in smindex %}
-              {% if sub_menu.sub_menu_id == 'smi6' %}
-              <li class="menu-has-children" ><a href="{% static 'files/PMEXFORM.pdf' %}" >{{ sub_menu.sub_menu_title }}</a>
-                {% elif sub_menu.sub_menu_id == 'smi7' %}
-                <li class="menu-has-children" ><a href="{% static 'files/CommissionSheet.pdf' %}" >{{ sub_menu.sub_menu_title }}</a>
-              {% endif %}
-              {% endfor %}
+              
+              <li class="menu-has-children" >
+                {% for form in findex %}
+                  
+                <a href="{{form.form.url}}" >{{ form.name }}</a>
+                  {% endfor %}
               </ul>
        </li>
             {% elif menu.menu_id == 'mi4' %}

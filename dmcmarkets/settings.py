@@ -23,8 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mbi4+v#w$fepyn=yo739t6$1ob0l(yihu7@#ueg37+%+wkqy55'
 
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER ='dmcmarketsadm@gmail.com'
-EMAIL_HOST_PASSWORD ='dmcmarkets8642'
+EMAIL_HOST_USER ='dmcmarketpvtltd@gmail.com'
+EMAIL_HOST_PASSWORD ='dmcmarkets340'
+EMAIL_PORT ='587'
+EMAIL_USE_TLS = True
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER_NAME ='dmcmarketshr@gmail.com'
+EMAIL_HOST_PASS ='S@dia_963'
 EMAIL_PORT ='587'
 EMAIL_USE_TLS = True
 
@@ -33,10 +39,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.100.8', 'localhost', '127.0.0.1', 'ddmcmarketss.herokuapp.com', 'dmcmarkets.herokuapp.com']
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
 )
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Application definition
 
 INSTALLED_APPS = [
@@ -141,7 +149,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 
 

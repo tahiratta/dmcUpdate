@@ -20,16 +20,6 @@ div.absolute {
     height: 300px;
     
 }
-div.peak {
-    position: absolute;
-    top: 80px;
-    left: -420px;
-    text-align: left;
-    right: 0;
-    width: 300px;
-    height: 300px;
-    
-}
 
 </style>
 
@@ -47,7 +37,7 @@ div.peak {
               {% for vslider in vslindex %}
       <video autoplay loop width="100%" max-height=auto> 
         
-  <source src="{{ vslider.vslider_video.url }}" type="video/mp4">
+  <source src="{{ vslider.vslider_video.url }}" type="video/mp4" accept="video/mp4,video/x-m4v,video/*">
         
 </video>
       
@@ -62,7 +52,7 @@ div.peak {
 
                 <h2>{{ vslider.vslider_title }}</h2>
                 <p>{{ vslider.vslider_description }}</p>
-                <a href="#services" class="btn-get-started scrollto">Get Started</a>
+                <a href="{% url 'marketWatch' %}" class="btn-get-started scrollto">Market Watch</a>
                 {% endfor %}
                 <br/><br/> <br/><br/>
               </div>
@@ -74,19 +64,6 @@ div.peak {
               <iframe onclick="#news" width="420" height="345" src="https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1">
                 </iframe>
 
-             
-              </div>
-              </div> </a></div>
-
-              <div class="peak">     <a href="#news" class="scrollto">
-   <div  class="carousel-content" style="text-align: left;">
-              <div style="text-align: left">
-
-
-              <div style="border: 2px solid #D5CC5A; overflow: hidden; margin: 15px auto; width: 440px; height: 355px;">
-              <iframe scrolling="no" src="https://www.cmcmarkets.com/en/" style="border: 0px none; margin-left: -5px; height: 3550px; margin-top: -3196px; width: 450px;">
-              </iframe>
-              </div>
              
               </div>
               </div> </a></div>

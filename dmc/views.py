@@ -1,9 +1,8 @@
-from django.shortcuts import render
-from dmc.models import Menu, Sub_menu, Video_slider, Product, Sub_product, About, Service
+from django.shortcuts import render, redirect
+from dmc.models import Menu, Sub_menu, Video_slider, Product, Sub_product, About, Service, Document,Form
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import contactForm
-from .forms import careersForm
+from .forms import contactForm, DocumentForm
 from django.core.files.storage import FileSystemStorage
 
 import os
@@ -22,12 +21,14 @@ def index(request):
 	pindex = Product.objects.all()
 	spindex = Sub_product.objects.all()
 	sindex = Service.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex,'sindex': sindex, 'vslindex' : vslindex, 'pindex' : pindex, 'spindex' : spindex}
+	findex = Form.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex,'sindex': sindex, 'vslindex' : vslindex, 'pindex' : pindex, 'spindex' : spindex, 'findex':findex }
 	return render(request, 'index.html', context)
 
 def contact(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
+	findex = Form.objects.all()
 
 	title = 'Contact Us'
 	form = contactForm(request.POST or None)
@@ -46,14 +47,15 @@ def contact(request):
 		confirm_message = "Thanks for the message, we will right back to you."
 		form = None
 		
-	context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
+	context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, 'findex':findex}
 	return render(request, 'contact.html', context)
 
 def about(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
 	abindex = About.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex,  'abindex' : abindex}
+	findex = Form.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex,  'abindex' : abindex, 'findex':findex}
 	return render(request, 'about.html', context)
 
 def products(request):
@@ -61,29 +63,32 @@ def products(request):
 	smindex = Sub_menu.objects.all()
 	pindex = Product.objects.all()
 	spindex = Sub_product.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'pindex' : pindex, 'spindex' : spindex }
+	findex = Form.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex, 'pindex' : pindex, 'spindex' : spindex, 'findex':findex }
 	return render(request, 'portfolio.html', context)
 
 def services(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
 	sindex = Service.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex, 'sindex': sindex}
+	findex = Form.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex, 'sindex': sindex, 'findex':findex}
 	return render(request, 'services.html', context)			
 
 def certificate(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-
-	context = {'mindex' : mindex, 'smindex' : smindex}
+	findex = Form.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex, 'findex':findex}
 	return render(request, 'certificate.html', context)	
 
 def careers(request):
 		mindex = Menu.objects.all()
 		smindex = Sub_menu.objects.all()
-
+		dindex = Document.objects.all()
+		findex = Form.objects.all()
 		title = 'Careers'
-		form = careersForm(request.POST or None, request.FILES or None)
+		form = DocumentForm(request.POST or None, request.FILES or None)
 		confirm_message = None
 
 		if form.is_valid():
@@ -91,23 +96,24 @@ def careers(request):
 			email = form.cleaned_data['email']
 			message = form.cleaned_data['message']
 			subject = form.cleaned_data['subject']
-			file = form.cleaned_data['file']
-			myfile = request.FILES['file']
+			document = form.cleaned_data['document']
+			myfile = request.FILES['document']
 			fs = FileSystemStorage()
 			filename = fs.save(myfile.name, myfile)
 			uploaded_file_url = fs.url(filename)
 
-			comment = '%s %s %s %s %s' %(email,name,subject,(message),file)
+			comment = '%s %s %s %s %s' %(email,name,subject,(message),document)
 			emailFrom = form.cleaned_data['email']
-			emailTo = [settings.EMAIL_HOST_USER]
+			emailTo = [settings.EMAIL_HOST_USER_NAME]
 			send_mail(subject, comment,emailFrom, emailTo, fail_silently=True)
+			form.save()
 			title = "Thanks!"
 			confirm_message = "Thanks for the message, we will right back to you."
 			form = None
-			context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
+			context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, 'dindex':dindex}
 			return render(request, 'careers.html',context)
 			
-		context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, }
+		context = {'mindex' : mindex, 'smindex' : smindex, 'title':title, 'form': form, 'confirm_message': confirm_message, 'dindex':dindex, 'findex':findex}
 		return render(request, 'careers.html', context)
 		# attachement = open(filename, 'rb')
 		# part = MIMEBase('application', 'octet-stream')
@@ -120,19 +126,28 @@ def careers(request):
 def pdfs(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-
-
-	start_path = 'settings.MEDIA_ROOT' # current directory
-	for path,dirs,files in os.walk(start_path):
-		for filename in files:
-			{{ os.path.join(path,filename) }}
-
-	context = {'mindex' : mindex, 'smindex' : smindex}
+	dindex = Document.objects.all()
+	findex = Form.objects.all()
+	context = {'mindex' : mindex, 'smindex' : smindex,'dindex':dindex, 'findex':findex}
 	return render(request, 'pdfs.html', context)			
 		
 
 def marketWatch(request):
 	mindex = Menu.objects.all()
 	smindex = Sub_menu.objects.all()
-	context = {'mindex' : mindex, 'smindex' : smindex}
+	findex = Form.objects.all()
+
+	context = {'mindex' : mindex, 'smindex' : smindex, 'findex':findex}
 	return render(request, 'marketWatch.html', context)		
+
+# def model_form_upload(request):
+#     if request.method == 'POST':
+#         form = DocumentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('careers')
+#     else:
+#         form = DocumentForm()
+#     return render(request, 'model_form_upload.html', {
+#         'form': form
+#     })	

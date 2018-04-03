@@ -63,6 +63,7 @@ class Sub_product(models.Model):
     sub_product_title = models.CharField(max_length=200)
     sub_product_image = models.ImageField()
     sub_product_content = models.CharField(max_length=200)
+    sub_product_description = models.TextField(max_length=7000)
     created_at = models.DateTimeField(auto_now_add =True)
     updated_at = models.DateTimeField(auto_now =True)
 
@@ -75,6 +76,7 @@ class About(models.Model):
 
     about_id = models.CharField(primary_key=True,max_length=20)
     about_title = models.CharField(max_length=20)
+    about_video = models.FileField()
     about_content = models.TextField(max_length=7000)
     mission_image = models.ImageField()
     mission_content = models.TextField(max_length=2000)
@@ -99,4 +101,31 @@ class Service(models.Model):
     updated_at = models.DateTimeField(auto_now =True)
 
     def __str__(self):
-        return self.service_title    
+        return self.service_title 
+
+class Document(models.Model):
+    class Meta:
+        verbose_name_plural = "documents"
+
+    name = models.CharField(max_length=255, blank=True)
+    email = models.EmailField(max_length=255, blank=True)
+    subject = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='')
+    message = models.TextField(max_length=2000, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True) 
+    updated_at = models.DateTimeField(auto_now =True)
+
+    def __str__(self):
+        return self.name    
+
+class Form(models.Model):
+    class Meta:
+        verbose_name_plural = "forms"
+
+    name = models.CharField(max_length=255, blank=True)
+    form = models.FileField()
+    uploaded_at = models.DateTimeField(auto_now_add=True) 
+    updated_at = models.DateTimeField(auto_now =True)
+
+    def __str__(self):
+        return self.name          

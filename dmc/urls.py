@@ -9,7 +9,7 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('certificate/', views.certificate, name='certificate'),
     path('careers/', views.careers, name='careers'),
-    path('pdfs/', views.pdfs, name='pdfs'),
+    path('dmcmarkets/portal/document/s2k45/dfery35634345y4/resumes/pdfs/65149845/', views.pdfs, name='pdfs'),
     path('marketWatch/', views.marketWatch, name='marketWatch'),
 
 ]
